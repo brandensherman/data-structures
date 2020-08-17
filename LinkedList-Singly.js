@@ -136,5 +136,3 @@ class SinglyLinkedList {
     }
   }
 }
-
-let list = new SinglyLinkedList();
