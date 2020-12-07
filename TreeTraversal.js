@@ -25,12 +25,13 @@ c.children.push(f, g, h);
 h.children.push(m);
 d.children.push(i, j);
 
-const logger = (node) => {
-  console.log(node);
+const logger = (value) => {
+  console.log(value);
 };
 
 // breadthFirst	[A B C D E F G H I J K L M]
 // Each "level" of the tree is printed in order
+// first explore all the nodes one step away, then all the nodes two steps away, etc.
 
 const breadthFirst = (startingNode, callback) => {
   // Begin with an array that contains the starting node (a)
@@ -53,16 +54,17 @@ const breadthFirst = (startingNode, callback) => {
 
 // depthFirstPreOrder	[A B E K L C F G H M D I J]
 // Children nodes are visited before sibling nodes
+// go as deep as possible down one path before backing up and trying a different one.
 
 const depthFirstPreOrder = (startingNode, callback) => {
   // Print the node - startingNode will be A
   callback(startingNode.value);
 
   // Iterate through each child of the startingNode
-  startingNode.children.forEach((child) => {
+  for (let child of startingNode.children) {
     // recursively call depthFirstPreOrder on each child in order to print each of the children's respective children
     depthFirstPreOrder(child, callback);
-  });
+  }
 };
 
 // depthFirstPreOrder(a, logger);
@@ -73,10 +75,10 @@ const depthFirstPreOrder = (startingNode, callback) => {
 
 const depthFirstPostOrder = (startingNode, callback) => {
   // Iterate through each child of the startingNode
-  startingNode.children.forEach((child) => {
+  for (let child of startingNode.children) {
     // recursively call depthFirstPostOrder on each child in order to print each of the children's respective children
     depthFirstPostOrder(child, callback);
-  });
+  }
   // Print the node - startingNode will be A -> first node printed will be K
   callback(startingNode.value);
 };

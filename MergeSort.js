@@ -1,5 +1,5 @@
 // Split an array into smaller arrays of 0 or 1 elements
-// Build up those array into a newly sorted array
+// Build up those arrays into a newly sorted array
 // Time: O(n log n)  ----  Space: O(n)
 
 // Merge sort will always split regardless if the array is partially sorted
@@ -25,7 +25,7 @@ function merge(left, right) {
     }
   }
 
-  // Because one of the arrays may end first we need to run the while loops to account for th edge case
+  // Because one of the arrays may end first we need to run the while loops to account for the edge case
   while (leftIndex < left.length) {
     merged.push(left[leftIndex]);
     leftIndex++;
